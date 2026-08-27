@@ -3,8 +3,8 @@ import { WaveFlourish, CornerFlourish } from './DecorativeSVGs';
 
 export const FooterSection = ({
   endMessage = "We can't wait to celebrate with you!",
-  groomName = "Usama",
-  brideName = "Ayesha"
+  groomName = "Usama Zafar",
+  brideName = "Ayesha Arshad"
 }) => {
   const monogram = `${groomName.charAt(0)} & ${brideName.charAt(0)}`;
 
@@ -29,7 +29,7 @@ export const FooterSection = ({
         <WaveFlourish className="w-full text-[#a5771d] mt-6 rotate-180" />
 
         <p className="text-xs text-[#614d3a] mt-8 font-garamond italic">
-          Usama & Ayesha Wedding Celebration · Royal Elegance
+          Usama Zafar & Ayesha Arshad Wedding Celebration · Royal Elegance
         </p>
       </div>
     </footer>

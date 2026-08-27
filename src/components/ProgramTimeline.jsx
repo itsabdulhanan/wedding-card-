@@ -4,9 +4,9 @@ import { DecorativeDivider } from './DecorativeSVGs';
 
 export const ProgramTimeline = ({ items = [] }) => {
   const defaultItems = [
-    { name: "Mehndi Ceremony", dateTime: "2026-11-13T19:00", description: "Traditional henna, vibrant celebrations & folk songs" },
+    { name: "Henna (RASM-E-HINA)", dateTime: "2026-11-13T19:00", description: "Traditional henna & celebrations · Groom Residence (Tibba Shah Kot, Chichawatni) & Bridal Residence (Sahiwal)" },
     { name: "The Sacred Nikkah", dateTime: "2026-11-14T17:00", description: "Solemnization of marriage, vows & heartfelt prayers" },
-    { name: "Walima Reception Welcome", dateTime: "2026-11-15T12:00", description: "12:00 PM – 4:00 PM: Guest arrival & photography at Qasar-e-Noor" },
+    { name: "Walima Reception Welcome", dateTime: "2026-11-15T12:00", description: "12:00 PM – 4:00 PM: Guest arrival & photography at Qasar-e-Noor, Chichawatni" },
     { name: "Grand Royal Feast", dateTime: "2026-11-15T13:30", description: "Royal lunch feast & celebratory greetings at Qasar-e-Noor" }
   ];
 

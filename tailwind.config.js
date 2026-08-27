@@ -21,6 +21,8 @@ export default {
       fontFamily: {
         cinzel: ['Cinzel', 'serif'],
         garamond: ['Cormorant Garamond', 'Georgia', 'serif'],
+        playfair: ['Playfair Display', 'Cormorant Garamond', 'Georgia', 'serif'],
+        italian: ['Cormorant Garamond', 'Playfair Display', 'Georgia', 'serif'],
         calligraphic: ['Pinyon Script', 'Great Vibes', 'cursive'],
         body: ['Montserrat', 'sans-serif']
       }

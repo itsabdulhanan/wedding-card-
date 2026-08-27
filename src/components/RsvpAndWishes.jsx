@@ -14,30 +14,17 @@ export const RsvpAndWishes = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [wishes, setWishes] = useState([]);
 
-  // Load existing wishes from localStorage
+  // Load existing wishes from localStorage (starts empty with no dummy comments)
   useEffect(() => {
     try {
-      const stored = localStorage.getItem('wedding_wishes_usama_ayesha');
+      const stored = localStorage.getItem('wedding_wishes_usama_ayesha_v2');
       if (stored) {
         setWishes(JSON.parse(stored));
       } else {
-        // Initial sample wishes
-        const initial = [
-          {
-            name: "Hamza & Zara",
-            message: "Heartiest congratulations to Usama and Ayesha! May Allah bless your union with eternal love, joy, and peace.",
-            time: "Yesterday"
-          },
-          {
-            name: "Uncle Tariq & Family",
-            message: "Wishing you both a lifetime of happiness and beautiful memories together. Looking forward to celebrating!",
-            time: "2 days ago"
-          }
-        ];
-        setWishes(initial);
+        setWishes([]);
       }
     } catch {
-      // fallback
+      setWishes([]);
     }
   }, []);
 
@@ -56,7 +43,7 @@ export const RsvpAndWishes = () => {
     const updated = [newWish, ...wishes];
     setWishes(updated);
     try {
-      localStorage.setItem('wedding_wishes_usama_ayesha', JSON.stringify(updated));
+      localStorage.setItem('wedding_wishes_usama_ayesha_v2', JSON.stringify(updated));
     } catch {
       // ignore
     }
@@ -220,7 +207,7 @@ export const RsvpAndWishes = () => {
               rows="3"
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="Write your wishes for Usama & Ayesha..."
+              placeholder="Write your wishes for Usama Zafar & Ayesha Arshad..."
               className="w-full px-4 py-2.5 rounded-xl border border-[#a5771d]/30 bg-white/90 text-sm text-[#241e14] focus:outline-none focus:ring-2 focus:ring-[#a5771d]/50 resize-none font-garamond italic text-base"
             />
           </div>

@@ -49,13 +49,28 @@ export const PhotoSlideshow = ({ images = [] }) => {
     }
   };
 
+  const captions = [
+    "Usama & Ayesha · Royal Union",
+    "Rasm-e-Hina · Festive Henna Evening",
+    "The Sacred Nikkah · Eternal Bond",
+    "Walima Reception · Grand Celebration"
+  ];
+
   return (
     <div className="py-6 select-none max-w-3xl mx-auto">
-      <DecorativeDivider className="mb-8" />
+      <div className="text-center mb-6">
+        <h2 className="font-cinzel text-3xl sm:text-4xl text-[#a5771d] font-semibold tracking-wide mb-1">
+          Moments of Love
+        </h2>
+        <p className="font-garamond italic text-base sm:text-lg text-[#614d3a]">
+          A fairytale journey of Usama Zafar & Ayesha Arshad
+        </p>
+      </div>
+      <DecorativeDivider className="mb-6" />
 
       {/* Frame Container */}
       <div
-        className="relative w-full h-72 sm:h-96 md:h-[450px] rounded-2xl overflow-hidden shadow-elegant border border-[#d4af37]/30 bg-black group"
+        className="relative w-full h-72 sm:h-96 md:h-[460px] rounded-2xl overflow-hidden shadow-elegant border border-[#d4af37]/30 bg-black group"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -76,12 +91,19 @@ export const PhotoSlideshow = ({ images = [] }) => {
         ))}
 
         {/* Soft Vignette Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
+
+        {/* Top-left Caption Badge */}
+        <div className="absolute top-4 left-4 z-10 pointer-events-none">
+          <span className="bg-black/60 px-3.5 py-1.5 rounded-full backdrop-blur-md border border-[#d4af37]/40 text-[11px] sm:text-xs font-cinzel tracking-widest text-[#f6dc97] uppercase shadow-lg">
+            {captions[currentIndex] || `Moment ${currentIndex + 1}`}
+          </span>
+        </div>
 
         {/* Navigation Arrows */}
         <button
           onClick={goToPrev}
-          className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all hover:bg-black/70 hover:scale-110"
+          className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all hover:bg-black/70 hover:scale-110 z-20"
           aria-label="Previous Slide"
         >
           <ChevronLeft size={20} />
@@ -89,7 +111,7 @@ export const PhotoSlideshow = ({ images = [] }) => {
 
         <button
           onClick={goToNext}
-          className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all hover:bg-black/70 hover:scale-110"
+          className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all hover:bg-black/70 hover:scale-110 z-20"
           aria-label="Next Slide"
         >
           <ChevronRight size={20} />

@@ -5,11 +5,11 @@ export const SaveTheDate = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [copiedStatus, setCopiedStatus] = useState(false);
 
-  const groom = data.groomName || "Usama";
-  const bride = data.brideName || "Ayesha";
+  const groom = data.groomName || "Usama Zafar";
+  const bride = data.brideName || "Ayesha Arshad";
   const title = `Wedding of ${groom} & ${bride}`;
-  const venue = [data.venueName, data.venueAddress].filter(Boolean).join(", ") || "Wedding Venue";
-  const dateStr = data.weddingDate || "2026-06-15";
+  const venue = [data.venueName, data.venueAddress].filter(Boolean).join(", ") || "Qasar-e-Noor, Chichawatni";
+  const dateStr = data.weddingDate || "2026-11-14";
   const timeStr = data.weddingTime || "17:00";
 
   // Parse start & end times

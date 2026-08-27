@@ -13,11 +13,13 @@ export const HeroDoorReveal = ({
   const [showNames, setShowNames] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
-  const groomName = data.groomName || "Usama";
-  const brideName = data.brideName || "Ayesha";
+  const groomName = data.groomName || "Usama Zafar";
+  const brideName = data.brideName || "Ayesha Arshad";
   const message = data.message || "WE'RE GETTING MARRIED";
-  const groomSubText = data.groomSubText || "";
-  const brideSubText = data.brideSubText || "";
+  const groomSubText = data.groomSubText || "Son of Mr. & Mrs. Muhammad Zafar";
+  const brideSubText = data.brideSubText || "Daughter of Mr. & Mrs. Qazi Hafiz Arshad";
+  const groomResidence = data.groomResidence || "Tibba Shah Kot, Chichawatni";
+  const brideResidence = data.brideResidence || "Sahiwal";
 
   // Trigger video playback on user interaction
   const handleOpen = async () => {
@@ -101,7 +103,7 @@ export const HeroDoorReveal = ({
         }`}
         style={{
           background:
-            'linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0.7) 100%)'
+            'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0.75) 100%)'
         }}
       />
 
@@ -133,16 +135,19 @@ export const HeroDoorReveal = ({
           <div className="h-[1px] w-16 bg-[#d4af37]/60 shadow-gold" />
         </div>
 
-        {/* Groom Name */}
-        <div className="my-1">
+        {/* Groom Name: Bold Letters Italian Style */}
+        <div className="my-2">
           <h1
-            className="font-cinzel text-5xl sm:text-7xl md:text-8xl lg:text-9xl leading-none text-[#d4af37] font-normal tracking-wide"
-            style={{ textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 0 30px rgba(212,175,55,0.3)' }}
+            className="font-garamond italic font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight text-[#d4af37] tracking-wide"
+            style={{ textShadow: '0 4px 24px rgba(0,0,0,0.95), 0 0 35px rgba(212,175,55,0.4)' }}
           >
             {groomName}
           </h1>
           {groomSubText && (
-            <p className="font-garamond italic text-[18px] sm:text-[20px] md:text-[22px] text-[#f5e6c8] max-w-lg mx-auto mt-2 drop-shadow-md tracking-wide">
+            <p
+              className="font-garamond italic text-[20px] text-[#f5e6c8] max-w-xl mx-auto mt-2 drop-shadow-md tracking-wide leading-snug"
+              style={{ fontSize: '20px' }}
+            >
               {groomSubText}
             </p>
           )}
@@ -150,22 +155,25 @@ export const HeroDoorReveal = ({
 
         {/* Ampersand */}
         <p
-          className="my-2 font-cinzel text-3xl md:text-5xl text-[#d4af37]/85 font-light"
-          style={{ textShadow: '0 2px 12px rgba(0,0,0,0.8)' }}
+          className="my-1 font-garamond italic font-bold text-3xl md:text-5xl text-[#d4af37]/90"
+          style={{ textShadow: '0 2px 14px rgba(0,0,0,0.85)' }}
         >
           &
         </p>
 
-        {/* Bride Name */}
-        <div className="my-1">
+        {/* Bride Name: Bold Letters Italian Style */}
+        <div className="my-2">
           <h1
-            className="font-cinzel text-5xl sm:text-7xl md:text-8xl lg:text-9xl leading-none text-[#d4af37] font-normal tracking-wide"
-            style={{ textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 0 30px rgba(212,175,55,0.3)' }}
+            className="font-garamond italic font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight text-[#d4af37] tracking-wide"
+            style={{ textShadow: '0 4px 24px rgba(0,0,0,0.95), 0 0 35px rgba(212,175,55,0.4)' }}
           >
             {brideName}
           </h1>
           {brideSubText && (
-            <p className="font-garamond italic text-[18px] sm:text-[20px] md:text-[22px] text-[#f5e6c8] max-w-lg mx-auto mt-2 drop-shadow-md tracking-wide">
+            <p
+              className="font-garamond italic text-[20px] text-[#f5e6c8] max-w-xl mx-auto mt-2 drop-shadow-md tracking-wide leading-snug"
+              style={{ fontSize: '20px' }}
+            >
               {brideSubText}
             </p>
           )}

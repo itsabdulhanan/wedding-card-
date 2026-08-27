@@ -1,21 +1,24 @@
 import React from 'react';
-import { Sparkles, Calendar, Clock, MapPin } from 'lucide-react';
+import { Sparkles, Calendar, Clock, MapPin, Home } from 'lucide-react';
 import { DecorativeDivider } from './DecorativeSVGs';
 
 export const PreWeddingSection = ({
+  mehndiTitle = "Henna (Rasm-e-Hina)",
   mehndiDate = "2026-11-13",
   mehndiTime = "19:00",
-  mehndiVenue = "Groom & Bride's Residence",
+  mehndiVenue = "Groom & Bridal Residences",
+  groomResidence = "Tibba Shah Kot, Chichawatni",
+  brideResidence = "Sahiwal",
   mehndiImage = "/images/mehandi-sketch.jpg"
 }) => {
   return (
     <div className="max-w-2xl mx-auto text-center py-6 sm:py-8">
       <div className="inline-flex items-center justify-center gap-2 px-4 py-1 rounded-full border border-[#a5771d]/30 bg-[#a5771d]/10 text-xs font-cinzel tracking-widest text-[#a5771d] mb-3">
-        <Sparkles size={13} /> PRE-WEDDING CELEBRATION
+        <Sparkles size={13} /> RASM-E-HINA
       </div>
 
       <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl text-[#a5771d] font-semibold tracking-wide mb-2">
-        Mehndi Ceremony
+        Henna (RASM-E-HINA)
       </h2>
       <DecorativeDivider className="my-4" />
 
@@ -25,7 +28,7 @@ export const PreWeddingSection = ({
           Friday, 13 November 2026
         </p>
         <p className="font-garamond italic text-lg text-[#614d3a] mt-1">
-          An evening of traditional henna, vibrant colors & heartfelt music
+          An evening of traditional henna, vibrant colors & joyous celebration
         </p>
       </div>
 
@@ -36,13 +39,13 @@ export const PreWeddingSection = ({
             <div className="relative rounded-xl overflow-hidden bg-[#faf7f2] border border-[#a5771d]/30">
               <img
                 src={mehndiImage}
-                alt="Mehndi Celebration Sketch"
+                alt="Henna (Rasm-e-Hina) Celebration Sketch"
                 className="w-full h-auto object-cover max-h-[380px] filter contrast-[1.02] brightness-[1.01] transition-all duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white/95 text-xs font-cinzel tracking-widest uppercase drop-shadow-md">
                 <span className="bg-black/60 px-3 py-1 rounded-full backdrop-blur-sm border border-[#d4af37]/40">
-                  Henna & Rasm-e-Hina · 13 Nov 2026
+                  Henna (RASM-E-HINA) · 13 Nov 2026
                 </span>
               </div>
             </div>
@@ -50,21 +53,42 @@ export const PreWeddingSection = ({
         </div>
       )}
 
-      {/* Event Details Card */}
-      <div className="max-w-md mx-auto p-5 rounded-2xl bg-white/70 border border-[#a5771d]/25 shadow-sm backdrop-blur-sm mt-4 text-left">
-        <div className="flex items-center gap-3 text-sm text-[#241e14] font-body mb-2.5">
+      {/* Event Details Card with Groom & Bridal Residences */}
+      <div className="max-w-md mx-auto p-5 rounded-2xl bg-white/70 border border-[#a5771d]/25 shadow-sm backdrop-blur-sm mt-4 text-left space-y-3">
+        <div className="flex items-center gap-3 text-sm text-[#241e14] font-body">
           <Calendar size={16} className="text-[#a5771d] shrink-0" />
           <span className="font-semibold">Friday, November 13, 2026</span>
         </div>
-        <div className="flex items-center gap-3 text-sm text-[#241e14] font-body mb-2.5">
+        <div className="flex items-center gap-3 text-sm text-[#241e14] font-body">
           <Clock size={16} className="text-[#a5771d] shrink-0" />
           <span>7:00 PM Onwards</span>
         </div>
-        <div className="flex items-center gap-3 text-sm text-[#241e14] font-body">
-          <MapPin size={16} className="text-[#a5771d] shrink-0" />
-          <span>{mehndiVenue}</span>
+
+        <div className="pt-2 border-t border-[#a5771d]/20 space-y-2">
+          {/* Groom Residence */}
+          <div className="flex items-start gap-3 text-sm text-[#241e14] font-body">
+            <Home size={16} className="text-[#a5771d] shrink-0 mt-0.5" />
+            <div>
+              <span className="font-semibold text-xs font-cinzel uppercase tracking-wider text-[#a5771d] block">
+                Groom Residence
+              </span>
+              <span>{groomResidence || "Tibba Shah Kot, Chichawatni"}</span>
+            </div>
+          </div>
+
+          {/* Bridal Residence */}
+          <div className="flex items-start gap-3 text-sm text-[#241e14] font-body">
+            <MapPin size={16} className="text-[#a5771d] shrink-0 mt-0.5" />
+            <div>
+              <span className="font-semibold text-xs font-cinzel uppercase tracking-wider text-[#a5771d] block">
+                Bridal Residence
+              </span>
+              <span>{brideResidence || "Sahiwal"}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
+

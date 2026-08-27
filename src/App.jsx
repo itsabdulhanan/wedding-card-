@@ -17,16 +17,19 @@ import { FloatingMusicPlayer } from './components/FloatingMusicPlayer';
 import { EditDrawer } from './components/EditDrawer';
 
 const DEFAULT_WEDDING_DATA = {
-  groomName: "Usama",
-  brideName: "Ayesha",
+  groomName: "Usama Zafar",
+  brideName: "Ayesha Arshad",
   groomSubText: "Son of Mr. & Mrs. Muhammad Zafar",
   brideSubText: "Daughter of Mr. & Mrs. Qazi Hafiz Arshad",
+  groomResidence: "Tibba Shah Kot, Chichawatni",
+  brideResidence: "Sahiwal",
   message: "WE'RE GETTING MARRIED",
   weddingDate: "2026-11-14",
   weddingTime: "17:00",
+  mehndiTitle: "Henna (RASM-E-HINA)",
   mehndiDate: "2026-11-13",
   mehndiTime: "19:00",
-  mehndiVenue: "Groom & Bride's Residence",
+  mehndiVenue: "Groom Residence: Tibba Shah Kot, Chichawatni · Bridal Residence: Sahiwal",
   nikkahDate: "2026-11-14",
   nikkahTime: "17:00",
   walimaDate: "2026-11-15",
@@ -115,12 +118,15 @@ export default function App() {
           />
         </section>
 
-        {/* 6. Pre-Wedding Celebration: Mehndi Ceremony (Friday, 13 Nov 2026) */}
+        {/* 6. Pre-Wedding Celebration: Henna (RASM-E-HINA) Ceremony (Friday, 13 Nov 2026) */}
         <section className="bg-white/60 rounded-3xl p-6 sm:p-10 border border-[#a5771d]/20 shadow-sm backdrop-blur-sm">
           <PreWeddingSection
+            mehndiTitle={data.mehndiTitle}
             mehndiDate={data.mehndiDate}
             mehndiTime={data.mehndiTime}
             mehndiVenue={data.mehndiVenue}
+            groomResidence={data.groomResidence}
+            brideResidence={data.brideResidence}
             mehndiImage="/images/mehandi-sketch.jpg"
           />
         </section>
