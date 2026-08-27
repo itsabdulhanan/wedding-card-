@@ -3,7 +3,7 @@ import { Sparkles, Calendar, Clock, MapPin, Home } from 'lucide-react';
 import { DecorativeDivider } from './DecorativeSVGs';
 
 export const PreWeddingSection = ({
-  mehndiTitle = "Henna (Rasm-e-Hina)",
+  mehndiTitle = "RASM-E-HINA",
   mehndiDate = "2026-11-13",
   mehndiTime = "19:00",
   mehndiVenue = "Groom & Bridal Residences",
@@ -18,7 +18,7 @@ export const PreWeddingSection = ({
       </div>
 
       <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl text-[#a5771d] font-semibold tracking-wide mb-2">
-        Henna (RASM-E-HINA)
+        (RASM-E-HINA)
       </h2>
       <DecorativeDivider className="my-4" />
 
@@ -39,13 +39,13 @@ export const PreWeddingSection = ({
             <div className="relative rounded-xl overflow-hidden bg-[#faf7f2] border border-[#a5771d]/30">
               <img
                 src={mehndiImage}
-                alt="Henna (Rasm-e-Hina) Celebration Sketch"
+                alt="RASM-E-HINA Celebration Sketch"
                 className="w-full h-auto object-cover max-h-[380px] filter contrast-[1.02] brightness-[1.01] transition-all duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white/95 text-xs font-cinzel tracking-widest uppercase drop-shadow-md">
                 <span className="bg-black/60 px-3 py-1 rounded-full backdrop-blur-sm border border-[#d4af37]/40">
-                  Henna (RASM-E-HINA) · 13 Nov 2026
+                  (RASM-E-HINA) · 13 Nov 2026
                 </span>
               </div>
             </div>

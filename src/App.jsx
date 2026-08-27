@@ -26,7 +26,7 @@ const DEFAULT_WEDDING_DATA = {
   message: "WE'RE GETTING MARRIED",
   weddingDate: "2026-11-14",
   weddingTime: "17:00",
-  mehndiTitle: "Henna (RASM-E-HINA)",
+  mehndiTitle: "(RASM-E-HINA)",
   mehndiDate: "2026-11-13",
   mehndiTime: "19:00",
   mehndiVenue: "Groom Residence: Tibba Shah Kot, Chichawatni · Bridal Residence: Sahiwal",
@@ -118,7 +118,7 @@ export default function App() {
           />
         </section>
 
-        {/* 6. Pre-Wedding Celebration: Henna (RASM-E-HINA) Ceremony (Friday, 13 Nov 2026) */}
+        {/* 6. Pre-Wedding Celebration: (RASM-E-HINA) Ceremony (Friday, 13 Nov 2026) */}
         <section className="bg-white/60 rounded-3xl p-6 sm:p-10 border border-[#a5771d]/20 shadow-sm backdrop-blur-sm">
           <PreWeddingSection
             mehndiTitle={data.mehndiTitle}
