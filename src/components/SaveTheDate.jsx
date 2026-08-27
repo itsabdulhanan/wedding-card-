@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Calendar, Check, Download, ExternalLink } from 'lucide-react';
 
-export const SaveTheDate = ({ data }) => {
+export const SaveTheDate = ({ data, lang = 'en', t }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [copiedStatus, setCopiedStatus] = useState(false);
 
-  const groom = data.groomName || "Usama Zafar";
-  const bride = data.brideName || "Ayesha Arshad";
+  const groom = lang === 'ur' ? (t?.groomName || "اسامہ ظفر") : (data.groomName || "Usama Zafar");
+  const bride = lang === 'ur' ? (t?.brideName || "عائشہ ارشد") : (data.brideName || "Ayesha Arshad");
   const title = `Wedding of ${groom} & ${bride}`;
   const venue = [data.venueName, data.venueAddress].filter(Boolean).join(", ") || "Qasar-e-Noor, Chichawatni";
   const dateStr = data.weddingDate || "2026-11-14";
@@ -75,7 +75,7 @@ export const SaveTheDate = ({ data }) => {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="group inline-flex items-center gap-2.5 rounded-full px-7 py-3 text-xs md:text-sm font-semibold uppercase tracking-[0.18em] transition-all duration-300 shadow-xl hover:scale-105 active:scale-95"
+        className={`group inline-flex items-center gap-2.5 rounded-full px-7 py-3 text-xs md:text-sm font-semibold uppercase tracking-[0.18em] transition-all duration-300 shadow-xl hover:scale-105 active:scale-95 ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}
         style={{
           background: 'linear-gradient(135deg, #a5771d 0%, #d4af37 100%)',
           color: '#fff',
@@ -86,12 +86,12 @@ export const SaveTheDate = ({ data }) => {
         {copiedStatus ? (
           <>
             <Check size={16} className="text-white animate-bounce" />
-            <span>Date Added!</span>
+            <span>{t?.dateAdded || "Date Added!"}</span>
           </>
         ) : (
           <>
             <Calendar size={16} className="text-white" />
-            <span>Save the Date</span>
+            <span>{t?.saveTheDateBtn || "Save the Date"}</span>
           </>
         )}
       </button>
@@ -99,8 +99,8 @@ export const SaveTheDate = ({ data }) => {
       {/* Calendar Provider Dropdown */}
       {isOpen && (
         <div className="absolute top-14 mt-2 w-64 rounded-xl bg-white/95 border border-[#a5771d]/30 shadow-2xl p-2.5 backdrop-blur-md z-50 text-left animate-fadeIn">
-          <div className="px-3 py-1.5 border-b border-gray-100 text-[11px] font-cinzel text-gray-500 uppercase tracking-wider">
-            Choose Your Calendar
+          <div className={`px-3 py-1.5 border-b border-gray-100 text-[11px] text-gray-500 uppercase tracking-wider ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+            {t?.chooseCalendar || "Choose Your Calendar"}
           </div>
           <div className="py-1">
             <button

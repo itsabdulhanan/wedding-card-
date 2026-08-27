@@ -19,7 +19,9 @@ const PALETTE = {
 export const ScratchCard = ({
   weddingDate = "2026-11-14",
   weddingTime = "17:00",
-  revealText = "Our forever begins"
+  revealText,
+  lang = 'en',
+  t
 }) => {
   const canvasRef = useRef(null);
   const [isRevealed, setIsRevealed] = useState(false);
@@ -31,14 +33,27 @@ export const ScratchCard = ({
   const formattedDate = (() => {
     try {
       const d = new Date(weddingDate + (weddingTime ? `T${weddingTime}` : 'T00:00:00'));
-      if (isNaN(d.getTime())) return { day: "Saturday", fullDate: "November 14, 2026", time: "5:00 PM" };
+      if (isNaN(d.getTime())) {
+        return lang === 'ur'
+          ? { day: "ہفتہ", fullDate: "14 نومبر 2026", time: "شام 5:00 بجے" }
+          : { day: "Saturday", fullDate: "November 14, 2026", time: "5:00 PM" };
+      }
+      if (lang === 'ur') {
+        return {
+          day: "ہفتہ",
+          fullDate: "14 نومبر 2026",
+          time: "شام 5:00 بجے"
+        };
+      }
       return {
         day: d.toLocaleDateString('en-US', { weekday: 'long' }),
         fullDate: d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
         time: weddingTime ? d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) : ""
       };
     } catch {
-      return { day: "Saturday", fullDate: "November 14, 2026", time: "5:00 PM" };
+      return lang === 'ur'
+        ? { day: "ہفتہ", fullDate: "14 نومبر 2026", time: "شام 5:00 بجے" }
+        : { day: "Saturday", fullDate: "November 14, 2026", time: "5:00 PM" };
     }
   })();
 
@@ -217,10 +232,10 @@ export const ScratchCard = ({
       {/* Heading */}
       <div className="mb-6 transition-all duration-700">
         <h2
-          className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-semibold tracking-wide"
+          className={`text-3xl sm:text-4xl md:text-5xl font-semibold tracking-wide ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}
           style={{ color: PALETTE.titleColor }}
         >
-          {isRevealed ? revealText : "Scratch to Reveal"}
+          {isRevealed ? (revealText || t?.ourForeverBegins || "Our forever begins") : (t?.scratchToReveal || "Scratch to Reveal")}
         </h2>
         <DecorativeDivider className="my-4" />
       </div>
@@ -259,19 +274,19 @@ export const ScratchCard = ({
             }}
           >
             <Heart size={22} className="text-[#8a1c2d] mb-1 animate-pulse" fill="currentColor" />
-            <p className="font-cinzel text-xs uppercase tracking-[0.2em] text-[#a5771d] font-medium">
+            <p className={`text-xs uppercase tracking-[0.2em] text-[#a5771d] font-medium ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
               {formattedDate.day}
             </p>
-            <p className="font-cinzel text-xl sm:text-2xl font-bold text-[#241e14] my-1 leading-tight">
+            <p className={`text-xl sm:text-2xl font-bold text-[#241e14] my-1 leading-tight ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
               {formattedDate.fullDate}
             </p>
             {formattedDate.time && (
-              <p className="font-garamond italic text-sm md:text-base text-[#614d3a]">
-                at {formattedDate.time}
+              <p className={`text-sm md:text-base text-[#614d3a] ${lang === 'ur' ? 'font-urdu' : 'font-garamond italic'}`}>
+                {formattedDate.time}
               </p>
             )}
-            <p className="font-calligraphic text-lg text-[#8a1c2d] mt-1 font-semibold">
-              Save Our Date
+            <p className={`text-lg text-[#8a1c2d] mt-1 font-semibold ${lang === 'ur' ? 'font-urdu' : 'font-calligraphic'}`}>
+              {t?.saveOurDate || "Save Our Date"}
             </p>
           </div>
 
@@ -294,8 +309,8 @@ export const ScratchCard = ({
           {!isScratching && !isRevealed && (
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-white/95 drop-shadow-md animate-pulse">
               <Sparkles size={24} className="text-[#fff8db] mb-1" />
-              <span className="font-cinzel text-xs uppercase tracking-widest font-semibold text-[#fff8db]">
-                Scratch Here
+              <span className={`text-xs uppercase tracking-widest font-semibold text-[#fff8db] ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+                {t?.scratchHere || "Scratch Here"}
               </span>
             </div>
           )}

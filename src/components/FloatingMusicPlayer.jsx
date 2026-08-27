@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Volume2, VolumeX, Volume1, Play, Pause, SkipForward, SkipBack, Music } from 'lucide-react';
+import { Volume2, VolumeX, Volume1, Play, Pause, SkipForward, SkipBack, Music, Globe } from 'lucide-react';
 
 export const WEDDING_TRACKS = [
   {
@@ -7,12 +7,6 @@ export const WEDDING_TRACKS = [
     title: 'Veerey Di Wedding',
     subtitle: 'Mika Singh • Bollywood Special',
     src: '/music/veerey.mp3'
-  },
-  {
-    id: 'track1',
-    title: 'Royal Wedding Celebration',
-    subtitle: 'Special Celebration Song',
-    src: '/music/track1.mp3'
   }
 ];
 
@@ -28,7 +22,10 @@ export const FloatingMusicPlayer = ({
   autoPlay = false,
   selectedTrack = 'veerey',
   onTrackChange,
-  audioRef: externalAudioRef
+  audioRef: externalAudioRef,
+  lang = 'en',
+  onLanguageChange,
+  t
 }) => {
   const internalAudioRef = useRef(null);
   const audioRef = externalAudioRef || internalAudioRef;
@@ -222,6 +219,19 @@ export const FloatingMusicPlayer = ({
           />
         </div>
 
+        {/* Language Switcher Button (English / اردو) */}
+        <button
+          type="button"
+          onClick={() => onLanguageChange && onLanguageChange(lang === 'en' ? 'ur' : 'en')}
+          className="flex items-center gap-1.5 px-3.5 py-2 rounded-full border border-[#a5771d]/40 bg-white/90 hover:bg-white text-[#241e14] shadow-xl backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 select-none"
+          title={lang === 'en' ? "اردو میں دیکھیں (Switch to Urdu)" : "Switch to English"}
+        >
+          <Globe size={14} className="text-[#a5771d]" />
+          <span className={lang === 'en' ? 'font-urdu font-bold text-sm text-[#8a1c2d]' : 'font-cinzel font-bold text-xs text-[#a5771d]'}>
+            {lang === 'en' ? 'اردو' : 'English'}
+          </span>
+        </button>
+
         {/* Main Floating Audio Pill / Toggle Button */}
         <button
           onClick={toggleSound}
@@ -242,16 +252,16 @@ export const FloatingMusicPlayer = ({
                 <span className="w-[3px] bg-[#d4af37] rounded-full animate-bounce [animation-delay:300ms] h-4/5" />
                 <span className="w-[3px] bg-[#d4af37] rounded-full animate-bounce [animation-delay:450ms] h-1/2" />
               </div>
-              <span className="font-cinzel text-xs tracking-wider uppercase hidden sm:inline text-[#f5e6c8]">
-                Playing
+              <span className={`text-xs tracking-wider uppercase hidden sm:inline text-[#f5e6c8] ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+                {t?.playing || 'Playing'}
               </span>
               <Volume2 size={16} className="text-[#d4af37] animate-pulse" />
             </>
           ) : (
             <>
               <VolumeX size={16} className="opacity-75 text-gray-600" />
-              <span className="font-cinzel text-xs tracking-wider uppercase hidden sm:inline text-gray-700 font-medium">
-                Play Music
+              <span className={`text-xs tracking-wider uppercase hidden sm:inline text-gray-700 font-medium ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+                {t?.playMusic || 'Play Music'}
               </span>
             </>
           )}

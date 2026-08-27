@@ -3,7 +3,7 @@ import { Mail, CheckCircle, Send, Heart, User, Users } from 'lucide-react';
 import { DecorativeDivider, CornerFlourish } from './DecorativeSVGs';
 import confetti from 'canvas-confetti';
 
-export const RsvpAndWishes = () => {
+export const RsvpAndWishes = ({ lang = 'en', t }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -32,10 +32,14 @@ export const RsvpAndWishes = () => {
     e.preventDefault();
     if (!formData.name.trim()) return;
 
+    const defaultMsg = lang === 'ur'
+      ? (formData.attending === 'yes' ? "ہم بخوشی شرکت کریں گے اور ڈھیروں دعائیں پیش کرتے ہیں!" : "ہماری طرف سے دلی مبارکباد اور نیک تمنائیں!")
+      : (formData.attending === 'yes' ? "Looking forward to celebrating with you!" : "Warmest wishes to the happy couple!");
+
     const newWish = {
       name: formData.name,
-      message: formData.message || (formData.attending === 'yes' ? "Looking forward to celebrating with you!" : "Warmest wishes to the happy couple!"),
-      time: "Just now",
+      message: formData.message || defaultMsg,
+      time: lang === 'ur' ? "ابھی" : "Just now",
       attending: formData.attending,
       guestCount: formData.guestCount
     };
@@ -67,8 +71,8 @@ export const RsvpAndWishes = () => {
 
       <div className="text-center mb-8">
         <Mail className="mx-auto text-[#a5771d] mb-3" size={28} />
-        <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl text-[#a5771d] font-semibold tracking-wide mb-2">
-          RSVP & Wishes
+        <h2 className={`text-3xl sm:text-4xl md:text-5xl text-[#a5771d] font-semibold tracking-wide mb-2 ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+          {t?.rsvpTitle || "RSVP & Wishes"}
         </h2>
         <DecorativeDivider className="my-4" />
       </div>
@@ -77,31 +81,31 @@ export const RsvpAndWishes = () => {
       {isSubmitted ? (
         <div className="p-8 rounded-2xl bg-white/85 border border-[#a5771d]/30 shadow-elegant text-center backdrop-blur-md animate-fadeIn max-w-md mx-auto">
           <CheckCircle size={44} className="text-[#a5771d] mx-auto mb-3 animate-bounce" />
-          <h3 className="font-cinzel text-2xl font-bold text-[#241e14] mb-2">
-            RSVP Received!
+          <h3 className={`text-2xl font-bold text-[#241e14] mb-2 ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+            {t?.rsvpReceived || "RSVP Received!"}
           </h3>
-          <p className="text-[#614d3a] font-garamond italic text-base">
-            Thank you for your response and heartfelt blessings. The couple will receive your message.
+          <p className={`text-[#614d3a] text-base ${lang === 'ur' ? 'font-urdu' : 'font-garamond italic'}`}>
+            {t?.rsvpThankYou || "Thank you for your response and heartfelt blessings. The couple will receive your message."}
           </p>
           <button
             onClick={() => {
               setIsSubmitted(false);
               setFormData({ name: '', email: '', attending: 'yes', guestCount: '1', message: '' });
             }}
-            className="mt-6 inline-flex items-center gap-1.5 px-5 py-2 rounded-full border border-[#a5771d]/40 text-xs font-cinzel tracking-wider text-[#a5771d] hover:bg-[#d4af37]/10 transition-colors"
+            className={`mt-6 inline-flex items-center gap-1.5 px-5 py-2 rounded-full border border-[#a5771d]/40 text-xs tracking-wider text-[#a5771d] hover:bg-[#d4af37]/10 transition-colors ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}
           >
-            Submit Another Message
+            {t?.submitAnother || "Submit Another Message"}
           </button>
         </div>
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="max-w-md mx-auto space-y-4 p-6 sm:p-8 rounded-2xl bg-white/75 border border-[#a5771d]/25 shadow-elegant backdrop-blur-md"
+          className={`max-w-md mx-auto space-y-4 p-6 sm:p-8 rounded-2xl bg-white/75 border border-[#a5771d]/25 shadow-elegant backdrop-blur-md ${lang === 'ur' ? 'text-right' : 'text-left'}`}
         >
           {/* Name */}
           <div>
-            <label className="block text-xs font-cinzel uppercase tracking-widest text-[#241e14] font-semibold mb-1.5">
-              Your Name *
+            <label className={`block text-xs uppercase tracking-widest text-[#241e14] font-semibold mb-1.5 ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+              {t?.yourName || "Your Name *"}
             </label>
             <div className="relative">
               <input
@@ -109,40 +113,40 @@ export const RsvpAndWishes = () => {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="Your full name"
-                className="w-full px-4 py-2.5 rounded-xl border border-[#a5771d]/30 bg-white/90 text-sm text-[#241e14] focus:outline-none focus:ring-2 focus:ring-[#a5771d]/50"
+                placeholder={t?.namePlaceholder || "Your full name"}
+                className={`w-full px-4 py-2.5 rounded-xl border border-[#a5771d]/30 bg-white/90 text-sm text-[#241e14] focus:outline-none focus:ring-2 focus:ring-[#a5771d]/50 ${lang === 'ur' ? 'font-urdu text-right pr-4 pl-10' : 'pl-4 pr-10'}`}
               />
-              <User size={16} className="absolute right-3 top-3 text-gray-400 pointer-events-none" />
+              <User size={16} className={`absolute top-3 text-gray-400 pointer-events-none ${lang === 'ur' ? 'left-3' : 'right-3'}`} />
             </div>
           </div>
 
           {/* Email */}
           <div>
-            <label className="block text-xs font-cinzel uppercase tracking-widest text-[#241e14] font-semibold mb-1.5">
-              Email *
+            <label className={`block text-xs uppercase tracking-widest text-[#241e14] font-semibold mb-1.5 ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+              {t?.email || "Email *"}
             </label>
             <input
               type="email"
               required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              placeholder="you@example.com"
-              className="w-full px-4 py-2.5 rounded-xl border border-[#a5771d]/30 bg-white/90 text-sm text-[#241e14] focus:outline-none focus:ring-2 focus:ring-[#a5771d]/50"
+              placeholder={t?.emailPlaceholder || "you@example.com"}
+              className={`w-full px-4 py-2.5 rounded-xl border border-[#a5771d]/30 bg-white/90 text-sm text-[#241e14] focus:outline-none focus:ring-2 focus:ring-[#a5771d]/50 ${lang === 'ur' ? 'text-right' : ''}`}
             />
           </div>
 
           {/* Attending Radio */}
           <div>
-            <label className="block text-xs font-cinzel uppercase tracking-widest text-[#241e14] font-semibold mb-2">
-              Will you be attending? *
+            <label className={`block text-xs uppercase tracking-widest text-[#241e14] font-semibold mb-2 ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+              {t?.attendingQuestion || "Will you be attending? *"}
             </label>
             <div className="grid grid-cols-2 gap-3">
               <label
-                className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border cursor-pointer text-xs font-cinzel transition-all ${
+                className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border cursor-pointer text-xs transition-all ${
                   formData.attending === 'yes'
                     ? 'border-[#a5771d] bg-[#a5771d]/15 text-[#a5771d] font-bold shadow-sm'
                     : 'border-gray-200 bg-white/60 text-gray-600'
-                }`}
+                } ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}
               >
                 <input
                   type="radio"
@@ -152,15 +156,15 @@ export const RsvpAndWishes = () => {
                   onChange={() => setFormData({ ...formData, attending: 'yes' })}
                   className="hidden"
                 />
-                <span>Joyfully Accept</span>
+                <span>{t?.joyfullyAccept || "Joyfully Accept"}</span>
               </label>
 
               <label
-                className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border cursor-pointer text-xs font-cinzel transition-all ${
+                className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border cursor-pointer text-xs transition-all ${
                   formData.attending === 'no'
                     ? 'border-[#8a1c2d] bg-[#8a1c2d]/15 text-[#8a1c2d] font-bold shadow-sm'
                     : 'border-gray-200 bg-white/60 text-gray-600'
-                }`}
+                } ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}
               >
                 <input
                   type="radio"
@@ -170,7 +174,7 @@ export const RsvpAndWishes = () => {
                   onChange={() => setFormData({ ...formData, attending: 'no' })}
                   className="hidden"
                 />
-                <span>Regretfully Decline</span>
+                <span>{t?.regretfullyDecline || "Regretfully Decline"}</span>
               </label>
             </div>
           </div>
@@ -178,44 +182,44 @@ export const RsvpAndWishes = () => {
           {/* Guests Count (if attending) */}
           {formData.attending === 'yes' && (
             <div>
-              <label className="block text-xs font-cinzel uppercase tracking-widest text-[#241e14] font-semibold mb-1.5">
-                Number of Guests
+              <label className={`block text-xs uppercase tracking-widest text-[#241e14] font-semibold mb-1.5 ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+                {t?.guestCountLabel || "Number of Guests"}
               </label>
               <div className="relative">
                 <select
                   value={formData.guestCount}
                   onChange={(e) => setFormData({ ...formData, guestCount: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#a5771d]/30 bg-white/90 text-sm text-[#241e14] focus:outline-none focus:ring-2 focus:ring-[#a5771d]/50"
+                  className={`w-full px-4 py-2.5 rounded-xl border border-[#a5771d]/30 bg-white/90 text-sm text-[#241e14] focus:outline-none focus:ring-2 focus:ring-[#a5771d]/50 ${lang === 'ur' ? 'font-urdu text-right' : ''}`}
                 >
-                  <option value="1">1 Guest</option>
-                  <option value="2">2 Guests</option>
-                  <option value="3">3 Guests</option>
-                  <option value="4">4 Guests</option>
-                  <option value="5">5+ Guests</option>
+                  <option value="1">{lang === 'ur' ? '1 مہمان' : '1 Guest'}</option>
+                  <option value="2">{lang === 'ur' ? '2 مہمان' : '2 Guests'}</option>
+                  <option value="3">{lang === 'ur' ? '3 مہمان' : '3 Guests'}</option>
+                  <option value="4">{lang === 'ur' ? '4 مہمان' : '4 Guests'}</option>
+                  <option value="5">{lang === 'ur' ? '5+ مہمان' : '5+ Guests'}</option>
                 </select>
-                <Users size={16} className="absolute right-3 top-3 text-gray-400 pointer-events-none" />
+                <Users size={16} className={`absolute top-3 text-gray-400 pointer-events-none ${lang === 'ur' ? 'left-3' : 'right-3'}`} />
               </div>
             </div>
           )}
 
           {/* Message / Wishes */}
           <div>
-            <label className="block text-xs font-cinzel uppercase tracking-widest text-[#241e14] font-semibold mb-1.5">
-              Your Wishes & Blessings
+            <label className={`block text-xs uppercase tracking-widest text-[#241e14] font-semibold mb-1.5 ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+              {t?.wishesLabel || "Your Wishes & Blessings"}
             </label>
             <textarea
               rows="3"
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="Write your wishes for Usama Zafar & Ayesha Arshad..."
-              className="w-full px-4 py-2.5 rounded-xl border border-[#a5771d]/30 bg-white/90 text-sm text-[#241e14] focus:outline-none focus:ring-2 focus:ring-[#a5771d]/50 resize-none font-garamond italic text-base"
+              placeholder={t?.wishesPlaceholder || "Write your wishes for Usama Zafar & Ayesha Arshad..."}
+              className={`w-full px-4 py-2.5 rounded-xl border border-[#a5771d]/30 bg-white/90 text-sm text-[#241e14] focus:outline-none focus:ring-2 focus:ring-[#a5771d]/50 resize-none text-base ${lang === 'ur' ? 'font-urdu text-right' : 'font-garamond italic'}`}
             />
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3.5 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] transition-all duration-300 shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+            className={`w-full py-3.5 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] transition-all duration-300 shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}
             style={{
               background: 'linear-gradient(135deg, #a5771d 0%, #d4af37 100%)',
               color: '#fff',
@@ -223,7 +227,7 @@ export const RsvpAndWishes = () => {
             }}
           >
             <Send size={15} />
-            <span>Send RSVP & Wishes</span>
+            <span>{t?.sendRsvpBtn || "Send RSVP & Wishes"}</span>
           </button>
         </form>
       )}
@@ -233,8 +237,8 @@ export const RsvpAndWishes = () => {
         <div className="mt-12 max-w-lg mx-auto">
           <div className="flex items-center justify-center gap-2 mb-6">
             <Heart size={16} className="text-[#8a1c2d]" fill="currentColor" />
-            <h4 className="font-cinzel text-base uppercase tracking-widest text-[#a5771d] font-bold">
-              Guest Blessings Wall
+            <h4 className={`text-base uppercase tracking-widest text-[#a5771d] font-bold ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+              {lang === 'ur' ? 'معزز مہمانوں کی دعائیں' : 'Guest Blessings Wall'}
             </h4>
           </div>
 
@@ -242,15 +246,15 @@ export const RsvpAndWishes = () => {
             {wishes.slice(0, 6).map((w, idx) => (
               <div
                 key={idx}
-                className="p-4 rounded-xl bg-white/60 border border-[#a5771d]/20 backdrop-blur-sm transition-all hover:bg-white/80"
+                className={`p-4 rounded-xl bg-white/60 border border-[#a5771d]/20 backdrop-blur-sm transition-all hover:bg-white/80 ${lang === 'ur' ? 'text-right' : 'text-left'}`}
               >
                 <div className="flex items-center justify-between mb-1">
-                  <span className="font-cinzel text-sm font-bold text-[#241e14]">
+                  <span className={`text-sm font-bold text-[#241e14] ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
                     {w.name}
                   </span>
                   <span className="text-[10px] text-gray-500">{w.time}</span>
                 </div>
-                <p className="text-sm font-garamond italic text-[#614d3a] leading-relaxed">
+                <p className={`text-sm text-[#614d3a] leading-relaxed ${lang === 'ur' ? 'font-urdu' : 'font-garamond italic'}`}>
                   "{w.message}"
                 </p>
               </div>

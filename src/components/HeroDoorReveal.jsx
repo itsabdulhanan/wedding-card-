@@ -6,20 +6,20 @@ export const HeroDoorReveal = ({
   data,
   onOpenInvitation,
   isOpen,
-  setIsOpen
+  setIsOpen,
+  lang = 'en',
+  t
 }) => {
   const videoRef = useRef(null);
   const [hasStarted, setHasStarted] = useState(false);
   const [showNames, setShowNames] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
-  const groomName = data.groomName || "Usama Zafar";
-  const brideName = data.brideName || "Ayesha Arshad";
-  const message = data.message || "WE'RE GETTING MARRIED";
-  const groomSubText = data.groomSubText || "Son of Mr. & Mrs. Muhammad Zafar";
-  const brideSubText = data.brideSubText || "Daughter of Mr. & Mrs. Qazi Hafiz Arshad";
-  const groomResidence = data.groomResidence || "Tibba Shah Kot, Chichawatni";
-  const brideResidence = data.brideResidence || "Sahiwal";
+  const groomName = lang === 'ur' ? (t?.groomName || "اسامہ ظفر") : (data.groomName || "Usama Zafar");
+  const brideName = lang === 'ur' ? (t?.brideName || "عائشہ ارشد") : (data.brideName || "Ayesha Arshad");
+  const message = lang === 'ur' ? (t?.wereGettingMarried || "شادی خانہ آبادی") : (data.message || "WE'RE GETTING MARRIED");
+  const groomSubText = lang === 'ur' ? (t?.groomSubText || "فرزندِ ارجمند: مسٹر اور مسز محمد ظفر") : (data.groomSubText || "Son of Mr. & Mrs. Muhammad Zafar");
+  const brideSubText = lang === 'ur' ? (t?.brideSubText || "دخترِ نیک اختر: مسٹر اور مسز قاضی حافظ ارشد") : (data.brideSubText || "Daughter of Mr. & Mrs. Qazi Hafiz Arshad");
 
   // Trigger video playback on user interaction
   const handleOpen = async () => {
@@ -82,15 +82,15 @@ export const HeroDoorReveal = ({
               </div>
             </div>
             <div>
-              <p className="font-cinzel text-base tracking-[0.25em] text-[#d4af37] font-semibold uppercase">
-                Royal Invitation
+              <p className={`text-base tracking-[0.25em] text-[#d4af37] font-semibold uppercase ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+                {t?.royalInvitation || "Royal Invitation"}
               </p>
-              <p className="font-garamond italic text-sm text-[#f5e6c8]/80 mt-1">
-                Tap anywhere to open
+              <p className={`text-sm text-[#f5e6c8]/80 mt-1 ${lang === 'ur' ? 'font-urdu' : 'font-garamond italic'}`}>
+                {t?.tapAnywhere || "Tap anywhere to open"}
               </p>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-[#d4af37]/50 bg-[#d4af37]/10 text-xs font-cinzel tracking-widest text-[#d4af37]">
-              <Sparkles size={12} /> TAP TO OPEN
+            <div className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-[#d4af37]/50 bg-[#d4af37]/10 text-xs tracking-widest text-[#d4af37] ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+              <Sparkles size={12} /> {t?.tapToOpen || "TAP TO OPEN"}
             </div>
           </div>
         </div>
@@ -122,7 +122,7 @@ export const HeroDoorReveal = ({
 
         {/* Message */}
         <p
-          className="mb-3 font-cinzel text-xs md:text-sm tracking-[0.4em] uppercase text-[#d4af37]"
+          className={`mb-3 text-xs md:text-sm tracking-[0.4em] uppercase text-[#d4af37] ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}
           style={{ textShadow: '0 2px 14px rgba(0,0,0,0.85)' }}
         >
           {message}
@@ -138,15 +138,15 @@ export const HeroDoorReveal = ({
         {/* Groom Name: Bold Letters Italian Style */}
         <div className="my-2">
           <h1
-            className="font-garamond italic font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight text-[#d4af37] tracking-wide"
+            className={`leading-tight text-[#d4af37] tracking-wide ${lang === 'ur' ? 'font-urdu text-5xl sm:text-7xl md:text-8xl font-bold' : 'font-garamond italic font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl'}`}
             style={{ textShadow: '0 4px 24px rgba(0,0,0,0.95), 0 0 35px rgba(212,175,55,0.4)' }}
           >
             {groomName}
           </h1>
           {groomSubText && (
             <p
-              className="font-garamond italic text-[20px] text-[#f5e6c8] max-w-xl mx-auto mt-2 drop-shadow-md tracking-wide leading-snug"
-              style={{ fontSize: '20px' }}
+              className={`text-[#f5e6c8] max-w-xl mx-auto mt-2 drop-shadow-md tracking-wide leading-snug ${lang === 'ur' ? 'font-urdu text-[18px]' : 'font-garamond italic text-[20px]'}`}
+              style={{ fontSize: lang === 'ur' ? '18px' : '20px' }}
             >
               {groomSubText}
             </p>
@@ -155,24 +155,24 @@ export const HeroDoorReveal = ({
 
         {/* Ampersand */}
         <p
-          className="my-1 font-garamond italic font-bold text-3xl md:text-5xl text-[#d4af37]/90"
+          className={`my-1 text-3xl md:text-5xl text-[#d4af37]/90 ${lang === 'ur' ? 'font-urdu' : 'font-garamond italic font-bold'}`}
           style={{ textShadow: '0 2px 14px rgba(0,0,0,0.85)' }}
         >
-          &
+          {lang === 'ur' ? 'اور' : '&'}
         </p>
 
         {/* Bride Name: Bold Letters Italian Style */}
         <div className="my-2">
           <h1
-            className="font-garamond italic font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight text-[#d4af37] tracking-wide"
+            className={`leading-tight text-[#d4af37] tracking-wide ${lang === 'ur' ? 'font-urdu text-5xl sm:text-7xl md:text-8xl font-bold' : 'font-garamond italic font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl'}`}
             style={{ textShadow: '0 4px 24px rgba(0,0,0,0.95), 0 0 35px rgba(212,175,55,0.4)' }}
           >
             {brideName}
           </h1>
           {brideSubText && (
             <p
-              className="font-garamond italic text-[20px] text-[#f5e6c8] max-w-xl mx-auto mt-2 drop-shadow-md tracking-wide leading-snug"
-              style={{ fontSize: '20px' }}
+              className={`text-[#f5e6c8] max-w-xl mx-auto mt-2 drop-shadow-md tracking-wide leading-snug ${lang === 'ur' ? 'font-urdu text-[18px]' : 'font-garamond italic text-[20px]'}`}
+              style={{ fontSize: lang === 'ur' ? '18px' : '20px' }}
             >
               {brideSubText}
             </p>
@@ -184,10 +184,10 @@ export const HeroDoorReveal = ({
       {showNames && (
         <div className="absolute inset-x-0 bottom-8 z-20 flex flex-col items-center gap-1.5 pointer-events-none animate-scroll-bounce">
           <span
-            className="text-[11px] uppercase font-cinzel tracking-[0.25em] text-[#d4af37]/80"
+            className={`text-[11px] uppercase tracking-[0.25em] text-[#d4af37]/80 ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}
             style={{ textShadow: '0 1px 6px rgba(0,0,0,0.8)' }}
           >
-            Scroll
+            {t?.scroll || "Scroll"}
           </span>
           <ChevronDown size={22} className="text-[#d4af37]" />
         </div>

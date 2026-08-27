@@ -1,10 +1,10 @@
 import React from 'react';
 
-export const WelcomeSection = ({ welcomeMessage }) => {
+export const WelcomeSection = ({ welcomeMessage, lang = 'en', t }) => {
   const defaultText =
     "With hearts full of love and joy, we warmly invite you to share in the celebration of our union. Your presence would mean the world to us as we begin this beautiful journey together.";
 
-  const textToDisplay = welcomeMessage || defaultText;
+  const textToDisplay = lang === 'ur' ? (t?.welcomeText || welcomeMessage) : (welcomeMessage || defaultText);
 
   return (
     <section
@@ -26,10 +26,12 @@ export const WelcomeSection = ({ welcomeMessage }) => {
 
         {/* Welcome Text */}
         <p
-          className="font-calligraphic text-3xl sm:text-4xl md:text-5xl leading-relaxed text-[#f7ecd5] italic font-normal tracking-wide px-4"
+          className={`text-2xl sm:text-3xl md:text-4xl leading-relaxed text-[#f7ecd5] tracking-wide px-4 ${
+            lang === 'ur' ? 'font-urdu leading-[2.2]' : 'font-calligraphic sm:text-4xl md:text-5xl italic font-normal'
+          }`}
           style={{
             textShadow: '0 2px 16px rgba(0,0,0,0.6)',
-            lineHeight: '1.8'
+            lineHeight: lang === 'ur' ? '2.2' : '1.8'
           }}
         >
           "{textToDisplay}"

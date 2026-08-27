@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { HeroDoorReveal } from './components/HeroDoorReveal';
 import { WelcomeSection } from './components/WelcomeSection';
 import { ScratchCard } from './components/ScratchCard';
@@ -15,6 +15,7 @@ import { RsvpAndWishes } from './components/RsvpAndWishes';
 import { FooterSection } from './components/FooterSection';
 import { FloatingMusicPlayer } from './components/FloatingMusicPlayer';
 import { EditDrawer } from './components/EditDrawer';
+import { translations } from './translations';
 
 const DEFAULT_WEDDING_DATA = {
   groomName: "Usama Zafar",
@@ -52,7 +53,10 @@ export default function App() {
   const [data, setData] = useState(DEFAULT_WEDDING_DATA);
   const [isOpen, setIsOpen] = useState(false);
   const [autoPlayMusic, setAutoPlayMusic] = useState(false);
+  const [lang, setLang] = useState('en'); // 'en' | 'ur'
   const audioRef = useRef(null);
+
+  const t = translations[lang] || translations.en;
 
   // When user opens the invitation on Hero, start music
   const handleOpenInvitation = () => {
@@ -65,13 +69,16 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fdfbf7] text-[#241e14] bg-damask selection:bg-[#d4af37]/30 selection:text-[#d4af37] relative">
-      {/* Floating Audio Controller */}
+    <div className={`min-h-screen bg-[#fdfbf7] text-[#241e14] bg-damask selection:bg-[#d4af37]/30 selection:text-[#d4af37] relative transition-all duration-300 ${lang === 'ur' ? 'font-urdu' : ''}`}>
+      {/* Floating Audio Controller + Language Switcher Toggle */}
       <FloatingMusicPlayer
         autoPlay={autoPlayMusic}
         selectedTrack={data.musicTrack}
         onTrackChange={(newTrack) => setData((prev) => ({ ...prev, musicTrack: newTrack }))}
         audioRef={audioRef}
+        lang={lang}
+        onLanguageChange={setLang}
+        t={t}
       />
 
       {/* Floating Customizer Drawer */}
@@ -87,10 +94,16 @@ export default function App() {
         onOpenInvitation={handleOpenInvitation}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
+        lang={lang}
+        t={t}
       />
 
       {/* 2. Welcome Section with Luxury Velvet-to-Cream Gradient */}
-      <WelcomeSection welcomeMessage={data.welcomeMessage} />
+      <WelcomeSection
+        welcomeMessage={data.welcomeMessage}
+        lang={lang}
+        t={t}
+      />
 
       {/* Main Content Container with Elegant Spacing & Ornaments */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 space-y-12 sm:space-y-16 py-12">
@@ -99,14 +112,16 @@ export default function App() {
           <ScratchCard
             weddingDate={data.weddingDate}
             weddingTime={data.weddingTime}
-            revealText="Our forever begins"
+            revealText={lang === 'ur' ? t?.ourForeverBegins : "Our forever begins"}
+            lang={lang}
+            t={t}
           />
-          <SaveTheDate data={data} />
+          <SaveTheDate data={data} lang={lang} t={t} />
         </section>
 
-        {/* 4. Photo Slideshow Gallery */}
+        {/* 4. Photo Slideshow Gallery (3 Exclusive Cartoon Illustrations) */}
         <section className="bg-white/60 rounded-3xl p-6 sm:p-10 border border-[#a5771d]/20 shadow-sm backdrop-blur-sm">
-          <PhotoSlideshow />
+          <PhotoSlideshow lang={lang} t={t} />
         </section>
 
         {/* 5. Live Countdown Timer */}
@@ -114,7 +129,9 @@ export default function App() {
           <CountdownTimer
             weddingDate={data.weddingDate}
             weddingTime={data.weddingTime}
-            customTitle="Counting Down to Forever"
+            customTitle={t?.countdownTitle}
+            lang={lang}
+            t={t}
           />
         </section>
 
@@ -128,6 +145,8 @@ export default function App() {
             groomResidence={data.groomResidence}
             brideResidence={data.brideResidence}
             mehndiImage="/images/mehandi-sketch.jpg"
+            lang={lang}
+            t={t}
           />
         </section>
 
@@ -137,6 +156,8 @@ export default function App() {
             nikkahDate={data.nikkahDate}
             nikkahTime={data.nikkahTime}
             nikkahImage="/images/nikkah-sketch.jpg"
+            lang={lang}
+            t={t}
           />
         </section>
 
@@ -149,12 +170,14 @@ export default function App() {
             venueImage={data.venueImage}
             walimaDate={data.walimaDate}
             walimaTime={data.walimaTime}
+            lang={lang}
+            t={t}
           />
         </section>
 
         {/* 9. Program Timeline */}
         <section className="bg-white/60 rounded-3xl p-6 sm:p-10 border border-[#a5771d]/20 shadow-sm backdrop-blur-sm">
-          <ProgramTimeline />
+          <ProgramTimeline lang={lang} t={t} />
         </section>
 
         {/* 10. Dress Code */}
@@ -162,6 +185,8 @@ export default function App() {
           <DressCodeSection
             dressCodeWomen={data.dressCodeWomen}
             dressCodeMen={data.dressCodeMen}
+            lang={lang}
+            t={t}
           />
         </section>
 
@@ -169,17 +194,19 @@ export default function App() {
         <section className="bg-white/60 rounded-3xl p-6 sm:p-10 border border-[#a5771d]/20 shadow-sm backdrop-blur-sm">
           <TravelAccomSection
             transportation={data.transportation}
+            lang={lang}
+            t={t}
           />
         </section>
 
         {/* 12. Gift Blessings */}
         <section className="bg-white/60 rounded-3xl p-6 sm:p-10 border border-[#a5771d]/20 shadow-sm backdrop-blur-sm">
-          <GiftsSection giftMessage={data.giftMessage} />
+          <GiftsSection giftMessage={data.giftMessage} lang={lang} t={t} />
         </section>
 
         {/* 13. RSVP & Live Wishes Wall */}
         <section className="bg-white/60 rounded-3xl p-6 sm:p-10 border border-[#a5771d]/20 shadow-sm backdrop-blur-sm">
-          <RsvpAndWishes />
+          <RsvpAndWishes lang={lang} t={t} />
         </section>
       </main>
 
@@ -188,6 +215,8 @@ export default function App() {
         endMessage={data.endMessage}
         groomName={data.groomName}
         brideName={data.brideName}
+        lang={lang}
+        t={t}
       />
     </div>
   );

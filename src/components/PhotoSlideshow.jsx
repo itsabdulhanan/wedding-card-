@@ -2,12 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { DecorativeDivider } from './DecorativeSVGs';
 
-export const PhotoSlideshow = ({ images = [] }) => {
+export const PhotoSlideshow = ({ images = [], t, lang = 'en' }) => {
   const defaultImages = [
     '/images/slide-1.jpg',
     '/images/slide-2.jpg',
-    '/images/slide-3.jpg',
-    '/images/slide-4.jpg'
+    '/images/slide-3.jpg'
   ];
 
   const slideList = images && images.length > 0 ? images : defaultImages;
@@ -20,7 +19,7 @@ export const PhotoSlideshow = ({ images = [] }) => {
     if (slideList.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % slideList.length);
-    }, 4000);
+    }, 4500);
     return () => clearInterval(timer);
   }, [slideList.length]);
 
@@ -49,21 +48,14 @@ export const PhotoSlideshow = ({ images = [] }) => {
     }
   };
 
-  const captions = [
-    "Usama & Ayesha · Royal Union",
-    "Rasm-e-Hina · Festive Henna Evening",
-    "The Sacred Nikkah · Eternal Bond",
-    "Walima Reception · Grand Celebration"
-  ];
-
   return (
     <div className="py-6 select-none max-w-3xl mx-auto">
       <div className="text-center mb-6">
-        <h2 className="font-cinzel text-3xl sm:text-4xl text-[#a5771d] font-semibold tracking-wide mb-1">
-          Moments of Love
+        <h2 className={`text-3xl sm:text-4xl text-[#a5771d] font-semibold tracking-wide mb-1 ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}>
+          {t?.momentsTitle || "Moments of Love"}
         </h2>
-        <p className="font-garamond italic text-base sm:text-lg text-[#614d3a]">
-          A fairytale journey of Usama Zafar & Ayesha Arshad
+        <p className={`text-base sm:text-lg text-[#614d3a] ${lang === 'ur' ? 'font-urdu' : 'font-garamond italic'}`}>
+          {t?.momentsSubtitle || "A fairytale journey of Usama Zafar & Ayesha Arshad"}
         </p>
       </div>
       <DecorativeDivider className="mb-6" />
@@ -91,14 +83,7 @@ export const PhotoSlideshow = ({ images = [] }) => {
         ))}
 
         {/* Soft Vignette Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
-
-        {/* Top-left Caption Badge */}
-        <div className="absolute top-4 left-4 z-10 pointer-events-none">
-          <span className="bg-black/60 px-3.5 py-1.5 rounded-full backdrop-blur-md border border-[#d4af37]/40 text-[11px] sm:text-xs font-cinzel tracking-widest text-[#f6dc97] uppercase shadow-lg">
-            {captions[currentIndex] || `Moment ${currentIndex + 1}`}
-          </span>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
 
         {/* Navigation Arrows */}
         <button
