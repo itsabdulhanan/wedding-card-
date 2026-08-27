@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Pinyon+Script&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: hsl(40, 70%, 38%);
+  --primary-rgb: 165, 119, 29;
+  --primary-foreground: hsl(38, 45%, 96%);
+  --background: hsl(36, 42%, 88%);
+  --foreground: hsl(24, 30%, 14%);
+  --card: hsl(38, 50%, 94%);
+  --card-foreground: hsl(24, 30%, 14%);
+  --secondary: hsl(36, 38%, 84%);
+  --secondary-foreground: hsl(24, 30%, 14%);
+  --muted: hsl(36, 32%, 82%);
+  --muted-foreground: hsl(24, 18%, 35%);
+  --accent: hsl(42, 72%, 48%);
+  --accent-foreground: hsl(24, 30%, 10%);
+  --cream: hsl(38, 48%, 90%);
+  --ivory: hsl(40, 55%, 95%);
+  --gold: hsl(42, 75%, 48%);
+  --gold-light: hsl(44, 70%, 68%);
+  --gold-dark: hsl(38, 70%, 32%);
+  --velvet: hsl(352, 62%, 32%);
+  --velvet-dark: hsl(352, 68%, 22%);
+  --border: hsl(352, 55%, 36%);
+  --input: hsl(36, 32%, 78%);
+  --ring: hsl(42, 72%, 48%);
+  --shadow-gold: 0 6px 28px -6px hsla(42, 75%, 48%, 0.45);
+  --shadow-elegant: 0 18px 50px -12px hsla(352, 62%, 22%, 0.35);
+  --gradient-gold: linear-gradient(135deg, hsl(42, 75%, 48%), hsl(44, 70%, 68%));
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #0f0f0f;
+  color: var(--foreground);
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: hsl(36, 42%, 88%);
+  color: hsl(24, 30%, 14%);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Typography Classes */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-garamond {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-calligraphic {
+  font-family: 'Pinyon Script', 'Great Vibes', cursive;
+}
+
+.font-calligraphy {
+  font-family: 'Cinzel', serif;
+}
+
+.font-display {
+  font-family: 'Cinzel', serif;
+}
+
+.font-body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Luxury Gold & Gradients */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #d4af37 0%, #f6dc97 50%, #c4962c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #f6dc97 0%, #d4a84a 50%, #8a6620 100%);
+}
+
+.gold-border {
+  border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.shadow-gold {
+  box-shadow: 0 6px 28px -6px rgba(212, 175, 55, 0.45);
+}
+
+.shadow-elegant {
+  box-shadow: 0 18px 50px -12px rgba(90, 20, 30, 0.25);
+}
+
+.cream-bg {
+  background-color: hsl(38, 48%, 90%);
+}
+
+.ivory-bg {
+  background-color: hsl(40, 55%, 95%);
+}
+
+/* Subtle Damask Pattern Background */
+.bg-damask {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a96e' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Floating Animations */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes bounceScroll {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-float {
+  animation: floatGentle 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+.animate-scroll-bounce {
+  animation: bounceScroll 2s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1614;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a5771d;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
