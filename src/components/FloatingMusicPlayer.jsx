@@ -3,10 +3,10 @@ import { Volume2, VolumeX, Volume1, Play, Pause, SkipForward, SkipBack, Music, G
 
 export const WEDDING_TRACKS = [
   {
-    id: 'veerey',
-    title: 'Veerey Di Wedding',
-    subtitle: 'Mika Singh • Bollywood Special',
-    src: '/music/veerey.mp3'
+    id: 'rang',
+    title: 'Rang',
+    subtitle: 'Hassan & Roshaan • Royal Acoustic',
+    src: '/music/rang.mp3'
   }
 ];
 

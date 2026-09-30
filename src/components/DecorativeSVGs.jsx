@@ -100,7 +100,10 @@ export const CrownSparkle = ({ className = "", size = 26 }) => (
     viewBox="0 0 24 24"
     fill="currentColor"
     className={className}
-    style={{ color: '#d4af37' }}
+    style={{
+      color: '#FCE39E',
+      filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.9)) drop-shadow(0 0 16px rgba(252,227,158,0.65))'
+    }}
   >
     <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5M19 19C19 19.6 18.6 20 18 20H6C5.4 20 5 19.6 5 19V18H19V19Z" />
   </svg>

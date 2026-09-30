@@ -103,7 +103,7 @@ export const HeroDoorReveal = ({
         }`}
         style={{
           background:
-            'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0.75) 100%)'
+            'radial-gradient(ellipse at center 40%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.72) 100%), linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 35%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.85) 100%)'
         }}
       />
 
@@ -117,36 +117,48 @@ export const HeroDoorReveal = ({
       >
         {/* Crown Icon */}
         <div className="mb-3 transition-transform duration-700 hover:scale-110">
-          <CrownSparkle size={32} className="mx-auto drop-shadow-[0_2px_12px_rgba(212,175,55,0.8)]" />
+          <CrownSparkle size={34} className="mx-auto" />
         </div>
 
-        {/* Message */}
-        <p
-          className={`mb-3 text-xs md:text-sm tracking-[0.4em] uppercase text-[#d4af37] ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}
-          style={{ textShadow: '0 2px 14px rgba(0,0,0,0.85)' }}
-        >
-          {message}
-        </p>
+        {/* Message ("WE'RE GETTING MARRIED") - Royal High Contrast Badge / Styling */}
+        <div className="mb-3 inline-flex items-center justify-center px-5 py-1.5 rounded-full bg-black/45 border border-[#d4af37]/45 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.7)]">
+          <p
+            className={`text-xs sm:text-sm uppercase font-semibold text-[#FFF8E7] ${
+              lang === 'ur'
+                ? 'font-urdu tracking-normal text-sm sm:text-base'
+                : 'font-cinzel tracking-[0.35em] sm:tracking-[0.45em]'
+            }`}
+            style={{
+              textShadow:
+                '0 2px 8px rgba(0,0,0,0.95), 0 0 15px rgba(254,232,179,0.5)'
+            }}
+          >
+            {message}
+          </p>
+        </div>
 
         {/* Mini Gold Divider */}
-        <div className="my-3 flex items-center justify-center gap-3">
-          <div className="h-[1px] w-16 bg-[#d4af37]/60 shadow-gold" />
-          <div className="w-1.5 h-1.5 rotate-45 bg-[#d4af37]" />
-          <div className="h-[1px] w-16 bg-[#d4af37]/60 shadow-gold" />
+        <div className="my-2.5 flex items-center justify-center gap-3">
+          <div className="h-[1px] w-20 bg-gradient-to-r from-transparent via-[#f6dc97]/90 to-transparent shadow-gold" />
+          <div className="w-1.5 h-1.5 rotate-45 bg-[#f6dc97] shadow-gold" />
+          <div className="h-[1px] w-20 bg-gradient-to-r from-transparent via-[#f6dc97]/90 to-transparent shadow-gold" />
         </div>
 
         {/* Groom Name: Bold Letters Italian Style */}
         <div className="my-2">
           <h1
-            className={`leading-tight text-[#d4af37] tracking-wide ${lang === 'ur' ? 'font-urdu text-5xl sm:text-7xl md:text-8xl font-bold' : 'font-garamond italic font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl'}`}
-            style={{ textShadow: '0 4px 24px rgba(0,0,0,0.95), 0 0 35px rgba(212,175,55,0.4)' }}
+            className={`leading-tight text-[#FCE39E] tracking-wide ${lang === 'ur' ? 'font-urdu text-5xl sm:text-7xl md:text-8xl font-bold' : 'font-garamond italic font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl'}`}
+            style={{ textShadow: '0 4px 24px rgba(0,0,0,0.95), 0 0 35px rgba(212,175,55,0.45)' }}
           >
             {groomName}
           </h1>
           {groomSubText && (
             <p
-              className={`text-[#f5e6c8] max-w-xl mx-auto mt-2 drop-shadow-md tracking-wide leading-snug ${lang === 'ur' ? 'font-urdu text-[18px]' : 'font-garamond italic text-[20px]'}`}
-              style={{ fontSize: lang === 'ur' ? '18px' : '20px' }}
+              className={`text-[#FFF8E7] max-w-xl mx-auto mt-2 drop-shadow-md tracking-wide leading-snug ${lang === 'ur' ? 'font-urdu text-[18px]' : 'font-garamond italic text-[20px]'}`}
+              style={{
+                fontSize: lang === 'ur' ? '18px' : '20px',
+                textShadow: '0 2px 10px rgba(0,0,0,0.9)'
+              }}
             >
               {groomSubText}
             </p>
@@ -155,8 +167,8 @@ export const HeroDoorReveal = ({
 
         {/* Ampersand */}
         <p
-          className={`my-1 text-3xl md:text-5xl text-[#d4af37]/90 ${lang === 'ur' ? 'font-urdu' : 'font-garamond italic font-bold'}`}
-          style={{ textShadow: '0 2px 14px rgba(0,0,0,0.85)' }}
+          className={`my-1 text-3xl md:text-5xl text-[#FCE39E] ${lang === 'ur' ? 'font-urdu' : 'font-garamond italic font-bold'}`}
+          style={{ textShadow: '0 2px 14px rgba(0,0,0,0.95), 0 0 20px rgba(212,175,55,0.4)' }}
         >
           {lang === 'ur' ? 'اور' : '&'}
         </p>
@@ -164,15 +176,18 @@ export const HeroDoorReveal = ({
         {/* Bride Name: Bold Letters Italian Style */}
         <div className="my-2">
           <h1
-            className={`leading-tight text-[#d4af37] tracking-wide ${lang === 'ur' ? 'font-urdu text-5xl sm:text-7xl md:text-8xl font-bold' : 'font-garamond italic font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl'}`}
-            style={{ textShadow: '0 4px 24px rgba(0,0,0,0.95), 0 0 35px rgba(212,175,55,0.4)' }}
+            className={`leading-tight text-[#FCE39E] tracking-wide ${lang === 'ur' ? 'font-urdu text-5xl sm:text-7xl md:text-8xl font-bold' : 'font-garamond italic font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl'}`}
+            style={{ textShadow: '0 4px 24px rgba(0,0,0,0.95), 0 0 35px rgba(212,175,55,0.45)' }}
           >
             {brideName}
           </h1>
           {brideSubText && (
             <p
-              className={`text-[#f5e6c8] max-w-xl mx-auto mt-2 drop-shadow-md tracking-wide leading-snug ${lang === 'ur' ? 'font-urdu text-[18px]' : 'font-garamond italic text-[20px]'}`}
-              style={{ fontSize: lang === 'ur' ? '18px' : '20px' }}
+              className={`text-[#FFF8E7] max-w-xl mx-auto mt-2 drop-shadow-md tracking-wide leading-snug ${lang === 'ur' ? 'font-urdu text-[18px]' : 'font-garamond italic text-[20px]'}`}
+              style={{
+                fontSize: lang === 'ur' ? '18px' : '20px',
+                textShadow: '0 2px 10px rgba(0,0,0,0.9)'
+              }}
             >
               {brideSubText}
             </p>
@@ -184,12 +199,12 @@ export const HeroDoorReveal = ({
       {showNames && (
         <div className="absolute inset-x-0 bottom-8 z-20 flex flex-col items-center gap-1.5 pointer-events-none animate-scroll-bounce">
           <span
-            className={`text-[11px] uppercase tracking-[0.25em] text-[#d4af37]/80 ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}
-            style={{ textShadow: '0 1px 6px rgba(0,0,0,0.8)' }}
+            className={`text-[12px] uppercase tracking-[0.25em] font-semibold text-[#FFF8E7] ${lang === 'ur' ? 'font-urdu' : 'font-cinzel'}`}
+            style={{ textShadow: '0 2px 8px rgba(0,0,0,0.95)' }}
           >
             {t?.scroll || "Scroll"}
           </span>
-          <ChevronDown size={22} className="text-[#d4af37]" />
+          <ChevronDown size={22} className="text-[#FCE39E] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]" />
         </div>
       )}
     </section>

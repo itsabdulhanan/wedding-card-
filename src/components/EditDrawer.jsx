@@ -50,6 +50,20 @@ export const EditDrawer = ({ data, setData, defaultData }) => {
 
               {/* Form Fields */}
               <div className="space-y-4 text-xs font-cinzel">
+                {/* Hero Announcement Message */}
+                <div>
+                  <label className="block uppercase tracking-wider text-gray-700 font-semibold mb-1">
+                    Announcement Message (Hero Header)
+                  </label>
+                  <input
+                    type="text"
+                    value={data.message || "WE'RE GETTING MARRIED"}
+                    onChange={(e) => setData({ ...data, message: e.target.value })}
+                    placeholder="e.g. WE'RE GETTING MARRIED"
+                    className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white font-sans text-sm focus:outline-none focus:ring-1 focus:ring-[#a5771d]"
+                  />
+                </div>
+
                 {/* Groom Name */}
                 <div>
                   <label className="block uppercase tracking-wider text-gray-700 font-semibold mb-1">
@@ -204,12 +218,11 @@ export const EditDrawer = ({ data, setData, defaultData }) => {
                     Background Wedding Music
                   </label>
                   <select
-                    value={data.musicTrack || 'veerey'}
+                    value={data.musicTrack || 'rang'}
                     onChange={(e) => setData({ ...data, musicTrack: e.target.value })}
                     className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white font-sans text-sm focus:outline-none focus:ring-1 focus:ring-[#a5771d]"
                   >
-                    <option value="veerey">Veerey Di Wedding (Mika Singh)</option>
-                    <option value="track1">Royal Wedding Celebration</option>
+                    <option value="rang">Rang (Hassan & Roshaan)</option>
                   </select>
                 </div>
               </div>

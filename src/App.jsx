@@ -26,13 +26,15 @@ const DEFAULT_WEDDING_DATA = {
   brideResidence: "Sahiwal",
   message: "WE'RE GETTING MARRIED",
   weddingDate: "2026-11-14",
-  weddingTime: "17:00",
+  weddingTime: "12:00",
   mehndiTitle: "(RASM-E-HINA)",
   mehndiDate: "2026-11-13",
   mehndiTime: "19:00",
   mehndiVenue: "Groom Residence: Tibba Shah Kot, Chichawatni · Bridal Residence: Sahiwal",
   nikkahDate: "2026-11-14",
-  nikkahTime: "17:00",
+  nikkahTime: "12:00",
+  nikkahVenueName: "Gardenia Banquet Marriage Hall",
+  nikkahGoogleMapsLink: "https://share.google/YMSas38R5uWbyQOvf",
   walimaDate: "2026-11-15",
   walimaTime: "12:00",
   venueName: "Qasar-e-Noor",
@@ -42,10 +44,10 @@ const DEFAULT_WEDDING_DATA = {
   welcomeMessage: "With hearts full of love and joy, we warmly invite you to share in the celebration of our union. Your presence would mean the world to us as we begin this beautiful journey together.",
   dressCodeWomen: "Elegant formal attire in pastel or jewel tones",
   dressCodeMen: "Suit or traditional formal wear",
-  transportation: "Complimentary transportation assistance is available upon request for out-of-station guests.",
+  transportation: "Transportation will be available on the day Barat goes. Transport will be provided for both out-of-station guests and in-city guests as well.",
   giftMessage: "Your love, blessings, and presence are the greatest gifts we could ever ask for.",
   endMessage: "We can't wait to celebrate with you!",
-  musicTrack: "veerey",
+  musicTrack: "rang",
   musicEnabled: true
 };
 
@@ -155,7 +157,9 @@ export default function App() {
           <NikkahSection
             nikkahDate={data.nikkahDate}
             nikkahTime={data.nikkahTime}
-            nikkahImage="/images/nikkah-sketch.jpg"
+            nikkahVenue={data.nikkahVenueName}
+            googleMapsLink={data.nikkahGoogleMapsLink}
+            nikkahImage="/images/gardenia-hall.jpg"
             lang={lang}
             t={t}
           />

@@ -7,7 +7,7 @@ export const TravelAccomSection = ({
   lang = 'en',
   t
 }) => {
-  const transText = lang === 'ur' ? (t?.transportation || transportation) : (transportation || "Complimentary transportation assistance is available upon request for out-of-station guests.");
+  const transText = lang === 'ur' ? (t?.transportation || transportation) : (transportation || "Transportation will be available on the day Barat goes. Transport will be provided for both out-of-station guests and in-city guests as well.");
 
   return (
     <div className="max-w-2xl mx-auto py-8">

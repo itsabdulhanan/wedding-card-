@@ -5,13 +5,12 @@ import { DecorativeDivider } from './DecorativeSVGs';
 export const ProgramTimeline = ({ items = [], lang = 'en', t }) => {
   const defaultItems = [
     { name: "(RASM-E-HINA)", timeText: "7:00 PM", description: "Traditional henna & celebrations · Groom Residence (Tibba Shah Kot, Chichawatni) & Bridal Residence (Sahiwal)" },
-    { name: "The Sacred Nikkah", timeText: "5:00 PM", description: "Solemnization of marriage, vows & heartfelt prayers" },
+    { name: "The Sacred Nikkah", timeText: "12:00 PM", description: "12:00 PM – 4:00 PM: Solemnization of marriage, vows & heartfelt prayers at Gardenia Banquet Marriage Hall" },
     { name: "Walima Reception Welcome", timeText: "12:00 PM", description: "12:00 PM – 4:00 PM: Guest arrival & photography at Qasar-e-Noor, Chichawatni" },
     { name: "Grand Royal Feast", timeText: "1:30 PM", description: "Royal lunch feast & celebratory greetings at Qasar-e-Noor" }
   ];
 
-  const translatedItems = t?.timelineEvents || defaultItems;
-  const programList = lang === 'ur' ? translatedItems : (items && items.length > 0 ? items : defaultItems);
+  const programList = items && items.length > 0 ? items : (t?.timelineEvents || defaultItems);
 
   return (
     <div className="max-w-xl mx-auto py-8">

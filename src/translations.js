@@ -52,9 +52,12 @@ export const translations = {
     nikkahSurah: "— Surah An-Naba [78:8]",
     nikkahDate: "Saturday, 14 November 2026",
     nikkahDesc: "The auspicious solemnization of the sacred bond of marriage & exchange of vows",
-    nikkahBadgeSketch: "Nikkah Pavilion · 14 Nov 2026",
-    nikkahTime: "5:00 PM (Ijbaat-o-Qubool & Dua)",
-    nikkahVenue: "Ceremony Hall & Gathering",
+    nikkahBadgeSketch: "Architectural View · Gardenia Banquet Hall",
+    nikkahTime: "12:00 PM to 4:00 PM (Ijbaat-o-Qubool & Ceremony)",
+    nikkahVenue: "Gardenia Banquet Marriage Hall",
+    nikkahVenueName: "Gardenia Banquet Marriage Hall",
+    nikkahVenueAddress: "Banquet Hall & Ceremony Venue",
+    nikkahGoogleMapsLink: "https://share.google/YMSas38R5uWbyQOvf",
 
     // Walima
     walimaBadge: "GRAND CELEBRATION",
@@ -75,7 +78,7 @@ export const translations = {
     timelineTitle: "Program Timeline",
     timelineEvents: [
       { name: "(RASM-E-HINA)", timeText: "7:00 PM", description: "Traditional henna & celebrations · Groom Residence (Tibba Shah Kot, Chichawatni) & Bridal Residence (Sahiwal)" },
-      { name: "The Sacred Nikkah", timeText: "5:00 PM", description: "Solemnization of marriage, vows & heartfelt prayers" },
+      { name: "The Sacred Nikkah", timeText: "12:00 PM", description: "12:00 PM – 4:00 PM: Solemnization of marriage, vows & celebrations at Gardenia Banquet Marriage Hall" },
       { name: "Walima Reception Welcome", timeText: "12:00 PM", description: "12:00 PM – 4:00 PM: Guest arrival & photography at Qasar-e-Noor, Chichawatni" },
       { name: "Grand Royal Feast", timeText: "1:30 PM", description: "Royal lunch feast & celebratory greetings at Qasar-e-Noor" }
     ],
@@ -89,7 +92,7 @@ export const translations = {
 
     // Transportation
     transportationTitle: "Transportation",
-    transportation: "Complimentary transportation assistance is available upon request for out-of-station guests.",
+    transportation: "Transportation will be available on the day Barat goes. Transport will be provided for both out-of-station guests and in-city guests as well.",
 
     // Gifts
     giftsTitle: "Gifts & Blessings",
@@ -174,9 +177,12 @@ export const translations = {
     nikkahSurah: "— سورۃ النبأ [78:8]",
     nikkahDate: "ہفتہ، 14 نومبر 2026",
     nikkahDesc: "سنتِ نبوی کے مطابق نکاح و ایجاب و قبول اور دعائے خیر کی بابرکت تقریب",
-    nikkahBadgeSketch: "نکاح پویلین · 14 نومبر 2026",
-    nikkahTime: "شام 5:00 بجے (ایجاب و قبول اور دعائے خیر)",
-    nikkahVenue: "میرج ہال و تقریبِ نکاح",
+    nikkahBadgeSketch: "گارڈینیا بینکوئٹ ہال · 14 نومبر 2026",
+    nikkahTime: "دوپہر 12:00 تا 4:00 بجے (ایجاب و قبول اور تقریبِ نکاح)",
+    nikkahVenue: "گارڈینیا بینکوئٹ میرج ہال",
+    nikkahVenueName: "گارڈینیا بینکوئٹ میرج ہال",
+    nikkahVenueAddress: "میرج ہال و تقریبِ نکاح",
+    nikkahGoogleMapsLink: "https://share.google/YMSas38R5uWbyQOvf",
 
     // Walima
     walimaBadge: "پروقار تقریبِ ولیمہ",
@@ -197,7 +203,7 @@ export const translations = {
     timelineTitle: "پروگرام و اوقات",
     timelineEvents: [
       { name: "(رسمِ حنا)", timeText: "شام 7:00 بجے", description: "روایتی مہندی و خوشیوں بھری تقریب · رہائش گاہ دولہا (ٹبہ شاہ کوٹ، چیچہ وطنی) و رہائش گاہ دلہن (ساہیوال)" },
-      { name: "تقریبِ با برکت نکاح", timeText: "شام 5:00 بجے", description: "ایجاب و قبول، سنتِ نبوی اور دعائے خیر" },
+      { name: "تقریبِ با برکت نکاح", timeText: "دوپہر 12:00 بجے", description: "12:00 تا 4:00 بجے: ایجاب و قبول، سنتِ نبوی اور تقریبِ نکاح بمقام گارڈینیا بینکوئٹ میرج ہال" },
       { name: "استقبالیہ دعوتِ ولیمہ", timeText: "دوپہر 12:00 بجے", description: "12:00 تا 4:00 بجے: مہمانوں کی آمد اور فوٹو سیشن بمقام قصرِ نور، چیچہ وطنی" },
       { name: "شاہی ضیافت (کھانا)", timeText: "دوپہر 1:30 بجے", description: "پروقار شاہی کھانا اور مبارکباد بمقام قصرِ نور" }
     ],
@@ -211,7 +217,7 @@ export const translations = {
 
     // Transportation
     transportationTitle: "سفری سہولت",
-    transportation: "شہر سے باہر سے تشریف لانے والے معزز مہمانوں کے لیے سفری رہنمائی اور معاونت دستیاب ہے۔",
+    transportation: "بارات کی روانگی کے دن ٹرانسپورٹ کی سہولت دستیاب ہوگی۔ شہر کے اندر اور باہر سے تشریف لانے والے تمام معزز مہمانوں کے لیے ٹرانسپورٹ فراہم کی جائے گی۔",
 
     // Gifts
     giftsTitle: "دعائیں و تحائف",
